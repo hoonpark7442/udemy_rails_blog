@@ -10,5 +10,7 @@
   <%= @article.description %>
 </p>
 
-<%= link_to 'Edit', edit_article_path(@article) %> |
+<% if logged_in? && (@article.user == current_user || current_user.admin?) %>
+	<%= link_to 'Edit', edit_article_path(@article) %> 
+<% end %>
 <%= link_to 'Back', articles_path %>
